@@ -68,3 +68,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+git add .
+
+git commit -m "Added password generator component"
+
+git push
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+If you create a new repository (only once)
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin <your-github-repo-url>
+git push -u origin main
+
+----------------------------------------------------------------------------------------------------------------------------------
