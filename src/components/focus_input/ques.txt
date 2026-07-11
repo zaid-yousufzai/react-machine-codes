@@ -1,0 +1,114 @@
+✅ Interview Questions & Answers
+1. Why did you use useRef?
+
+Answer:
+
+"useRef is used to get a reference to the input element so I can directly call the focus() method."
+
+2. Why not use useState?
+
+Answer:
+
+"useState is for data that affects the UI. Here I only need to access the DOM element, so useRef is the correct choice."
+
+3. What is inputRef.current?
+
+Answer:
+
+"inputRef.current holds the actual DOM element after the component renders."
+
+4. Why is null passed to useRef?
+const inputRef = useRef(null);
+
+Answer:
+
+"Initially, the input element doesn't exist in the DOM, so the ref starts as null. React assigns the DOM element after rendering."
+
+5. What does .focus() do?
+
+Answer:
+
+"It places the cursor inside the input field so the user can start typing immediately."
+
+6. Does changing ref.current cause a re-render?
+
+Answer:
+
+"No. Updating ref.current does not trigger a component re-render."
+
+7. Difference between useRef and useState?
+useRef	useState
+Stores DOM references or mutable values	Stores state
+Doesn't trigger re-render	Triggers re-render
+Used for DOM manipulation	Used for UI updates
+8. When should you use useRef?
+
+Answer:
+
+Focusing an input
+Scrolling to an element
+Playing/pausing a video
+Storing timer IDs
+Storing previous values
+Accessing DOM elements
+9. Can we use document.getElementById() instead?
+
+Answer:
+
+"Yes, but useRef is the React way because it avoids manually querying the DOM and integrates with React's lifecycle."
+
+10. Why doesn't useRef trigger a re-render?
+
+Answer:
+
+"React doesn't track changes to ref.current for rendering. It's intended for mutable values and DOM access."
+
+11. Can useRef store values other than DOM elements?
+
+Answer:
+
+"Yes. It can store mutable values like timer IDs, previous state values, counters, or objects."
+
+Example:
+
+const timerRef = useRef(null);
+12. What happens if inputRef.current is null?
+
+Answer:
+
+"Calling .focus() on null throws an error. We should ensure the element exists before accessing it."
+
+if (inputRef.current) {
+  inputRef.current.focus();
+}
+⭐ Follow-up Questions (Often Asked)
+Q. Can one ref be used for multiple elements?
+
+Answer:
+
+"No. One ref should point to one element. Use separate refs if you need multiple DOM references."
+
+Q. Can we focus the input automatically when the page loads?
+
+Answer:
+
+Yes, by combining useRef with useEffect.
+
+useEffect(() => {
+  inputRef.current.focus();
+}, []);
+Q. What is the difference between useRef and createRef()?
+
+Answer:
+
+"useRef is used in functional components and persists across renders. createRef() is mainly used in class components and creates a new ref each render in functional components."
+
+📝 Interview Tip
+
+If the interviewer asks:
+
+"When do you prefer useRef over useState?"
+
+Answer:
+
+"I use useState when changing data should update the UI. I use useRef when I need to access a DOM element or store a mutable value without causing a re-render."

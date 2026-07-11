@@ -1,0 +1,107 @@
+1. Why did you use useState?
+
+Answer:
+
+"useState is used to manage dynamic values like the selected rating and cart count. When these values change, React re-renders the component."
+
+2. Why did you use useMemo?
+
+Answer:
+
+"useMemo caches the filtered recipes. It prevents filtering from running again when unrelated state, like the cart count, changes."
+
+3. What happens if you remove useMemo?
+
+Answer:
+
+"The application still works, but filtering runs on every render. For small data it's fine, but for large datasets it can affect performance."
+
+4. Why did you create filteredRecipes instead of writing .filter() inside JSX?
+
+Answer:
+
+"It avoids repeating the filtering logic. I can reuse the filtered array for rendering and for calculating the average rating."
+
+5. Why use reduce()?
+
+Answer:
+
+"reduce() combines all ratings into a single total, which I divide by the number of filtered recipes to get the average."
+
+6. Why is 0 passed to reduce()?
+
+Answer:
+
+"It is the initial value of the accumulator. It also prevents errors when the array is empty."
+
+7. Why did you use a functional update for the cart?
+setCart(prev => prev + 1);
+
+Answer:
+
+"State updates are asynchronous. Using the previous state guarantees the correct value even if multiple updates happen quickly."
+
+8. Why convert the dropdown value using Number()?
+
+Answer:
+
+"e.target.value is always a string. Converting it to a number ensures numeric comparisons work as expected."
+
+9. Why use key={item.id}?
+
+Answer:
+
+"A stable, unique key helps React efficiently update the list. Using an ID avoids issues that can happen with array indexes."
+
+10. Why not use the array index as the key?
+
+Answer:
+
+"If items are added, removed, or reordered, indexes change. React may reuse the wrong component, causing incorrect UI or state."
+
+11. Why use semantic HTML?
+
+Answer:
+
+"Semantic tags improve accessibility, SEO, and make the HTML easier to understand."
+
+12. Where would you use React.memo?
+
+Answer:
+
+"I would wrap the recipe card component with React.memo so it doesn't re-render when its props haven't changed."
+
+Example:
+
+const RecipeCard = React.memo(({ recipe }) => {
+   ...
+});
+13. How can you verify that useMemo is working?
+
+Answer:
+
+"I can place a console.log() inside the useMemo callback. It should run only when the dependency changes, not on every render."
+
+14. What is the time complexity of filtering?
+
+Answer:
+
+"Filtering checks every recipe once, so the time complexity is O(n)."
+
+15. What is the time complexity of calculating the average?
+
+Answer:
+
+"reduce() also visits every filtered recipe once, so its time complexity is O(n)."
+
+16. How could you improve this app further?
+
+Answer:
+
+"I could split the UI into reusable components like RecipeCard and Filter, add search functionality, disable duplicate cart additions if needed, and make the layout responsive."
+
+17. Why keep the filter state in the parent component?
+
+Answer:
+
+"The parent owns the filtered list and passes the necessary data to child components. This keeps data flow predictable and follows React's one-way data flow."

@@ -1,0 +1,48 @@
+setAttempt((prev) => prev + 1) is safer because it updates based on the latest previous state. setAttempt(attempt + 1) uses the value of attempt from the current render, which can become stale if React batches updates or if multiple updates happen quickly.
+
+Simple difference
+setAttempt(attempt + 1): “take the current attempt and add 1.”
+
+setAttempt(prev => prev + 1): “take whatever the latest value is and add 1.”
+
+Why prev is better
+React state updates are asynchronous and may be batched, so direct updates can reuse an old value more than once. The functional form avoids that problem because React passes the most recent state into prev.
+
+Example
+js
+setAttempt(attempt + 1);
+setAttempt(attempt + 1);
+This may still end up increasing only once, because both lines can read the same old attempt value.
+
+js
+setAttempt(prev => prev + 1);
+setAttempt(prev => prev + 1);
+This correctly increases twice, because each update receives the latest state from the previous one.
+
+In your app
+For your guessing game, prev => prev + 1 is the better choice because the new attempt count depends on the previous attempt count.
+
+how i can know when to use what
+
+Use prev => prev + 1 when the next state depends on the previous state, and use setState(value) when you already know the new value directly.
+
+Easy rule
+Use setAttempt(prev => prev + 1) for counters, toggles, totals, and anything updated from the old value.
+
+Use setInput("abc") or setRes("Correct") when you are setting a fixed value.
+
+Why
+React state updates can be batched, so setAttempt(attempt + 1) may read an older value from the current render. The functional form gets the latest state automatically, so it is safer for repeated or fast updates.
+
+In your code
+setAttempt(prev => prev + 1) is right, because the attempt count increases based on the old count.
+
+setInput("") is right, because you already know the exact value you want.
+
+setRes("Too High") is right, because it’s a direct assignment.
+
+Simple memory trick
+“Previous state?” → prev => ...
+
+“Fixed value?” → direct value
+

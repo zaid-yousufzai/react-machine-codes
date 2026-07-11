@@ -1,0 +1,83 @@
+/* Card Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Fixes cards squishing on one line */
+  gap: 20px;       /* Adds clean spacing between the cards */
+  padding: 20px;
+}
+
+.card {
+  width: 320px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Recipe Image */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card Content Padding */
+.card h2, 
+.card h3, 
+.card .rating-container {
+  padding: 0 16px;
+}
+
+/* Recipe Title */
+.card h2 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin: 16px 0 4px 0;
+  font-weight: 600;
+}
+
+/* Cuisine / Subtitle */
+.card h3 {
+  font-size: 0.9rem;
+  color: #718096;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+  font-weight: 500;
+}
+
+/* Ratings & Reviews Wrapper */
+.card .rating-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #edf2f7;
+  padding-top: 12px;
+  padding-bottom: 16px;
+  margin-top: 8px;
+}
+
+/* Rating & Review Text */
+.card .rating-container p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+
+.upper-item{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}

@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import InputFocus from './components/focus_input/InputFocus'
+// import RecipeFilterApp from './components/filter_recipes/RecipeFilterApp'
+// import BlogPost from './components/blog_post/BlogPost'
+// import DarkMode from './components/dark_mode/DarkMode'
+// import Chips from './components/chips/Chips'
+// import Guess from './components/guess_the_number/Guess'
+// import Grail from './components/holy_grail/Grail'
+// import Password from './components/password/Password'
+// import Calculator from './components/mortgage_calculator/Calculator'
+// import Form from './components/contact_form/Form'
+// import ProgressBar from './components/progress_bar/ProgressBar'
+// import Accordian from './components/accordian/Accordian'
+// import Counter from './components/counter/Counter'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* <Counter/> */}
+      {/* <Accordian/> */}
+      {/* <Form/> */}
+      {/* <ProgressBar/> */}
+      {/* <Calculator/> */}
+      {/* <Password/> */}
+      {/* <Grail/> */}
+      {/* <Guess/> */}
+      {/* <Chips/> */}
+      {/* <DarkMode/> */}
+      {/* <BlogPost/> */}
+      {/* <RecipeFilterApp/> */}
+      <InputFocus/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

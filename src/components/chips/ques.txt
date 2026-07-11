@@ -1,0 +1,57 @@
+_ here is just a throwaway variable name. In chips.filter((_, idx) => idx !== index), the first argument is the current array item, but you are not using it, so people name it _ to show “this value is ignored”.
+
+What filter is doing
+filter calls the callback for each item in chips.
+
+The callback gets currentValue, index, and the whole array.
+
+Here, _ is currentValue, and idx is the index.
+
+What this code returns
+
+let x = chips.filter((_, idx) => idx !== index)
+
+This creates a new array that keeps every item except the one whose position matches index.
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+The difference is about which state value React uses when building the new array.
+
+setChips((prev) => [...prev, trimmed])
+prev is the latest chips array.
+
+React gives you the current state at update time.
+
+This is safer when updates happen quickly or more than once.
+
+setChips([...chips, trimmed])
+Uses the chips value from the current render.
+
+If React batches updates, chips can be stale.
+
+That can cause one update to overwrite another.
+
+Easy rule
+Use prev => ... when the new state depends on the old state.
+
+Use direct array/value syntax when you already know the final value.
+
+In your case
+For adding chips, prev is better because you are appending to the existing list. It avoids bugs where the array is not fully up to date.
+
+Example
+If two add actions happen quickly:
+
+setChips([...chips, "A"]);
+setChips([...chips, "B"]);
+Both lines may read the same old chips, so one item can be lost.
+
+With:
+
+j
+setChips((prev) => [...prev, "A"]);
+setChips((prev) => [...prev, "B"]);
+React applies each update to the latest array, so both items stay.
+
+A simple memory trick: old state depends on prev, fixed state uses direct value.

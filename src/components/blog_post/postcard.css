@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: bisque;
+}
+
+.title {
+}
+
+.tag-box {
+  display: flex;
+  gap: 20px;
+}
+
+.tag {
+  background-color: grey;
+  border-radius: 10%;
+}
+
+.reactions {
+  display: flex;
+  gap: 10px;
+}

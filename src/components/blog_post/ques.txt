@@ -1,0 +1,161 @@
+✅ Best Practice
+
+The requirement says:
+
+Create a reusable PostCard component that accepts:
+
+title
+body
+tags
+reactions
+views
+
+Your PostCard is taking the entire data array and doing the .map() inside it. This makes it less reusable.
+
+Instead:
+
+BlogPost should loop over the data.
+PostCard should display one post only.
+
+⚡ Optimizations
+1. Use React.memo
+
+If cards don't change often:
+
+export default React.memo(PostCard);
+
+Prevents unnecessary re-renders.
+
+2. Don't use array index as key
+
+❌
+
+key={idx}
+
+✅
+
+key={tag}
+
+or
+
+key={`${item.id}-${tag}`}
+3. Remove console.log()
+
+Interviewers don't like leftover debug code.
+
+4. Use semantic HTML
+
+Instead of
+
+<p className="title">
+
+use
+
+<h2>{title}</h2>
+5. Keep mapping in parent
+
+The parent owns the list.
+
+The child displays one item.
+
+This is the React way.
+
+📝 Interview Tip
+
+If asked "Why didn't you map inside PostCard?"
+
+Say:
+
+"I kept the list rendering in the parent and made PostCard responsible for displaying a single post. This makes the component reusable, easier to test, and follows the Single Responsibility Principle."
+
+
+1. Why use Semantic HTML tags?
+✅ Best Practice
+
+Use tags like:
+
+<header>
+<main>
+<section>
+<article>
+<footer>
+<nav>
+<h1>–<h6>
+
+instead of only <div> and <p>.
+
+👍 Benefits
+Better accessibility (screen readers understand the page better).
+Better SEO (search engines understand the content structure).
+Easier for developers to read and maintain.
+❌
+<div className="title">React Interview</div>
+✅
+<h2>React Interview</h2>
+📝 Interview Tip
+
+"Semantic tags improve accessibility, SEO, and make the HTML structure more meaningful."
+
+2. Why shouldn't we use the index as a key?
+✅ Best Practice
+
+Use a unique and stable ID.
+
+Why?
+
+React uses key to identify which item is which between renders.
+
+If you use the index and the list changes (insert, delete, reorder), React can match the wrong items, leading to incorrect UI or component state.
+
+❌ Example
+["A", "B", "C"]
+
+Keys:
+
+0 -> A
+1 -> B
+2 -> C
+
+Now remove A.
+
+["B", "C"]
+
+Keys become:
+
+0 -> B
+1 -> C
+
+React thinks:
+
+A became B
+B became C
+
+instead of recognizing that A was removed.
+
+✅ Better
+users.map(user => (
+  <User key={user.id} />
+))
+
+The id stays the same even if the order changes.
+
+When is index OK?
+
+Only when:
+
+The list is static.
+Items are never added, removed, or reordered.
+
+Example:
+
+const weekdays = [
+  "Mon",
+  "Tue",
+  "Wed"
+];
+
+Using the index here is usually fine because the list never changes.
+
+📝 Interview Tip
+
+"React keys should be stable and unique so React can efficiently reconcile the list."

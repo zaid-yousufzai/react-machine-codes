@@ -1,0 +1,44 @@
+Contact Form Notes
+useState stores form values, errors, and success message.
+
+formData keeps the input values.
+
+errors keeps validation messages.
+
+success shows a thank-you message after submit.
+
+handleChange updates the field when user types.
+
+...formData keeps old values and changes only one field.
+
+[e.target.name] makes the key dynamic, so the correct input gets updated.
+
+e.preventDefault() stops page reload on form submit.
+
+Object.keys(newErrors).length > 0 checks if there are any errors.
+
+If errors exist, form submit stops.
+
+If no errors exist, success message shows and form can be cleared.
+
+onChange must be written correctly, or inputs will not work.
+
+Input name must match state keys like name, email, message.
+
+One-line interview answer
+“This form is a controlled React form that uses state for input values, validation, and success message. It updates values with onChange, stops default submit with preventDefault(), checks errors, and shows success only when input is valid.”
+
+Very short remember note
+useState = store data.
+
+onChange = update data.
+
+...formData = keep old data.
+
+[e.target.name] = update correct field.
+
+preventDefault() = stop reload.
+
+Object.keys(errors).length > 0 = check errors.
+
+Would you like me to turn this into a 5-line interview cheat sheet?

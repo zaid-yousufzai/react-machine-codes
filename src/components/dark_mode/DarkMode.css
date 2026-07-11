@@ -1,0 +1,17 @@
+.light-mode {
+  background: white;
+  color: black;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.dark-mode {
+  background: black;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.mode-text {
+  margin-left: 8px;
+}

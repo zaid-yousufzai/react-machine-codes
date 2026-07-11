@@ -1,0 +1,13 @@
+In React, you should pass the function reference or call it inside an arrow function, not write onClick={()=>handleCheck}.
+
+Main issue
+This line: <button onClick={()=>handleCheck} >Check</button>
+does not execute handleCheck. It returns the function instead of calling it. 
+
+Use either of these:
+<button onClick={handleCheck}>Check</button>
+or
+<button onClick={() => handleCheck()}>Check</button>
+
+
+React expects a function as the event handler, and passing the function directly is the standard approach when no arguments are needed.
