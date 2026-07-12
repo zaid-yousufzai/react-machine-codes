@@ -1,0 +1,78 @@
+Why use the functional form of setState?
+this.setState(prevState => ({
+   show: !prevState.show
+}));
+
+Answer
+
+"Because setState is asynchronous. Using the previous state ensures the update is based on the latest value."
+
+
+<section> is a semantic HTML tag. It gives meaning to your content, while <div> is just a generic container.
+
+<div> vs <section>
+❌ <div>
+<div>
+  <h2>User Profile</h2>
+  <p>Bio...</p>
+</div>
+No meaning.
+Just groups elements.
+✅ <section>
+<section>
+  <h2>User Profile</h2>
+  <p>Bio...</p>
+</section>
+Represents a thematic section of a page.
+Gives meaning to browsers, screen readers, and search engines.
+Benefits of <section>
+1. Better Accessibility ⭐
+
+Screen readers understand that this is a separate section of the page.
+
+Example:
+
+Profile Section
+----------------
+Name
+Bio
+
+Instead of just reading a generic <div>.
+
+2. Better SEO ⭐
+
+Search engines understand the page structure better.
+
+Example:
+
+<main>
+    <section>
+        <h2>Latest Blogs</h2>
+    </section>
+
+    <section>
+        <h2>Popular Recipes</h2>
+    </section>
+</main>
+
+Google can better understand that these are different content sections.
+
+3. Better Readability ⭐
+
+When another developer reads your code:
+
+<section>
+
+they immediately know
+
+"This is a section of the page."
+
+Instead of
+
+<div>
+
+which gives no clue.
+
+When should you use <section>?
+
+Use it when the content has its own heading or purpose.

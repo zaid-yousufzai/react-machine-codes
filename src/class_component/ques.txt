@@ -1,0 +1,215 @@
+✅ Interview Questions & Answers
+1. Why do we extend Component?
+
+Answer:
+
+"To create a class component. By extending Component, we get access to React features like state, props, and lifecycle methods."
+
+2. Why do we use constructor()?
+
+Answer:
+
+"The constructor is used to initialize the component's state and bind methods if needed."
+
+3. Why do we call super(props)?
+
+Answer:
+
+"super(props) calls the parent Component constructor so that this.props is available inside the constructor."
+
+4. What happens if we don't pass props to super()?
+
+Answer:
+
+"this.props will be undefined inside the constructor. Outside the constructor, React still provides this.props."
+
+Example:
+
+constructor(props){
+   super();   // Wrong
+   console.log(this.props); // undefined
+}
+
+Correct:
+
+constructor(props){
+   super(props);
+   console.log(this.props);
+}
+
+constructor(props){
+   super();
+   console.log(props);
+}
+
+5. Why do we use this.state?
+
+Answer:
+
+"this.state stores data that can change over time and causes the component to re-render when updated."
+
+6. Why do we use setState() instead of directly changing the state?
+
+❌ Wrong
+
+this.state.counter++;
+
+✅ Correct
+
+this.setState({
+   counter: this.state.counter + 1
+});
+
+Answer:
+
+"setState() tells React that the state has changed and the component should re-render."
+
+7. Why shouldn't we modify the state directly?
+
+Answer:
+
+"React won't know the state has changed, so the UI may not update."
+
+8. Why do we write this.state.counter?
+
+Answer:
+
+"Because the state belongs to the class instance, so we access it using this."
+
+9. Why do we use this.props?
+
+Answer:
+
+"Props are passed from the parent component and are accessed using this.props in class components."
+
+10. Why destructure props?
+const { name } = this.props;
+
+Answer:
+
+"It makes the code shorter and easier to read."
+
+Instead of
+
+this.props.name
+
+write
+
+name
+11. Why does setState() cause a re-render?
+
+Answer:
+
+"React detects the state change and calls the render() method again to update the UI."
+
+12. Is setState() synchronous?
+
+Answer:
+
+"No. setState() is asynchronous. React may batch multiple state updates together."
+
+13. What is the render() method?
+
+Answer:
+
+"render() returns the JSX that should be displayed on the screen."
+
+14. Why is render() called multiple times?
+
+Answer:
+
+"Whenever state or props change, React calls render() again."
+
+15. Why use class components instead of functional components?
+
+Answer:
+
+"Class components were used before Hooks were introduced. Today, functional components with Hooks are preferred because they are simpler and easier to maintain."
+
+16. What are props?
+
+Answer:
+
+"Props are read-only values passed from a parent component to a child component."
+
+17. Can a child modify props?
+
+Answer:
+
+"No. Props are immutable. A child can read them but should not modify them."
+
+18. What is the difference between props and state?
+Props	State
+Passed by parent	Managed inside the component
+Read-only	Can be updated
+Used to pass data	Used to manage dynamic data
+19. Why use an arrow function in onClick?
+onClick={() =>
+   this.setState(...)
+}
+
+Answer:
+
+"The arrow function ensures setState() is called only when the button is clicked."
+
+20. What happens if you write this?
+onClick={this.setState({
+   counter: this.state.counter + 1
+})}
+
+Answer:
+
+"setState() runs immediately during rendering instead of waiting for the click event."
+
+⭐ Important Notes
+1. super(props)
+Calls the parent constructor.
+Makes this.props available inside the constructor.
+2. setState()
+Updates the state.
+Triggers a re-render.
+Is asynchronous.
+3. State
+Mutable.
+Managed inside the component.
+Changes over time.
+4. Props
+Immutable.
+Passed from parent.
+Used for communication between components.
+5. render()
+Returns JSX.
+Runs after every state or prop change.
+6. Constructor
+
+Used for:
+
+Initializing state.
+Accessing props.
+Binding methods (if not using arrow functions).
+7. Class Component Lifecycle (Basic Order)
+constructor()
+
+↓
+
+render()
+
+↓
+
+componentDidMount()
+
+↓
+
+(setState)
+
+↓
+
+render()
+
+↓
+
+componentDidUpdate()
+
+↓
+
+componentWillUnmount()

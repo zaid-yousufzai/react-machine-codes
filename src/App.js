@@ -1,5 +1,7 @@
 import React from 'react'
-import InputFocus from './components/focus_input/InputFocus'
+import Profile from './components/user_profile/Profile'
+// import ClassCounter from './class_component/ClassCounter'
+// import InputFocus from './components/focus_input/InputFocus'
 // import RecipeFilterApp from './components/filter_recipes/RecipeFilterApp'
 // import BlogPost from './components/blog_post/BlogPost'
 // import DarkMode from './components/dark_mode/DarkMode'
@@ -28,7 +30,9 @@ const App = () => {
       {/* <DarkMode/> */}
       {/* <BlogPost/> */}
       {/* <RecipeFilterApp/> */}
-      <InputFocus/>
+      {/* <InputFocus/> */}
+      {/* <ClassCounter  name="Zaid Comp"/> */}
+      <Profile/>
     </div>
   )
 }
