@@ -1,0 +1,93 @@
+1. Why did you use state?
+
+Answer
+
+"The hovered icon changes dynamically, so it needs to be stored in the component's state."
+
+2. Why store the index instead of true or false?
+
+Answer
+
+"Only one tooltip should be visible at a time. Storing the index tells React exactly which icon is being hovered."
+
+3. Why initialize with null?
+hoveredIndex: null
+
+Answer
+
+"Initially, no icon is hovered, so the state is null."
+
+4. Why use onMouseEnter?
+
+Answer
+
+"It runs when the mouse enters an element, so it's the right event to show the tooltip."
+
+5. Why use onMouseLeave?
+
+Answer
+
+"It hides the tooltip when the mouse leaves the icon."
+
+6. Explain this code
+hoveredIndex === index
+
+Answer
+
+"It checks whether the current icon is the one being hovered."
+
+7. Why use conditional rendering?
+hoveredIndex === index && (
+    <div>Home</div>
+)
+
+Answer
+
+"The tooltip should only be shown for the hovered icon."
+
+8. Why use setState()?
+
+Answer
+
+"Because changing the hovered icon updates the UI, and setState() triggers a re-render."
+
+9. Why use key?
+
+Answer
+
+"Keys help React identify list items efficiently during updates."
+
+10. Why not use the array index as the key?
+
+Answer
+
+"If items are reordered or removed, indexes change. Stable unique keys help React update the correct item."
+
+(In this specific example, using icon.label is better because it's unique.)
+
+11. What happens when the mouse enters an icon?
+
+Answer
+
+onMouseEnter fires.
+setState() updates hoveredIndex.
+React calls render().
+Tooltip becomes visible.
+12. What happens when the mouse leaves?
+
+Answer
+
+onMouseLeave fires.
+hoveredIndex becomes null.
+React re-renders.
+Tooltip disappears.
+
+
+
+If the interviewer asks:
+
+"Why didn't you create separate state for every icon?"
+
+Answer:
+
+"Only one tooltip should be visible at a time. Using a single hoveredIndex is simpler, uses less state, and scales better."

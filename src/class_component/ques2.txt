@@ -1,0 +1,280 @@
+1. What is a React Lifecycle?
+
+Answer
+
+"Lifecycle is the different stages a component goes through: creation, update, and removal."
+
+🌍 Real-life Example
+
+Think of a person:
+
+Born → Constructor
+Starts working → componentDidMount()
+Gets promoted → componentDidUpdate()
+Retires → componentWillUnmount()
+2. What is the order of lifecycle methods?
+
+Answer
+
+constructor()
+
+↓
+
+render()
+
+↓
+
+componentDidMount()
+
+↓
+
+(setState)
+
+↓
+
+render()
+
+↓
+
+componentDidUpdate()
+
+↓
+
+componentWillUnmount()
+3. What is the constructor used for?
+
+Answer
+
+"It initializes the state and runs only once when the component is created."
+
+🌍 Example
+
+Like setting up a new phone for the first time.
+
+4. Why do we use super(props)?
+
+Answer
+
+"It calls the parent constructor and makes this.props available inside the constructor."
+
+5. What is render()?
+
+Answer
+
+"It returns the JSX that React displays on the screen."
+
+🌍 Example
+
+Like drawing the UI on a whiteboard.
+
+6. Why is render() called multiple times?
+
+Answer
+
+"Whenever state or props change, React calls render() again."
+
+7. What is componentDidMount()?
+
+Answer
+
+"It runs once after the component is added to the page."
+
+🌍 Example
+
+Like opening a page and immediately loading user data.
+
+Common uses:
+
+API calls
+Timers
+Event listeners
+8. Why do API calls in componentDidMount()?
+
+Answer
+
+"Because the UI is already rendered, so it's the best place to fetch data."
+
+9. What is componentDidUpdate()?
+
+Answer
+
+"It runs after every update to state or props."
+
+🌍 Example
+
+If the counter changes,
+
+setState()
+
+then
+
+render()
+
+↓
+
+componentDidUpdate()
+10. What is componentWillUnmount()?
+
+Answer
+
+"It runs before the component is removed from the page."
+
+🌍 Example
+
+Closing a browser tab.
+
+Use it for:
+
+Clearing timers
+Removing event listeners
+Closing WebSocket connections
+11. Why clear setInterval()?
+clearInterval(this.timerId);
+
+Answer
+
+"To prevent the timer from running after the component is removed, avoiding memory leaks."
+
+12. What is a memory leak?
+
+Answer
+
+"A resource like a timer or event listener keeps running even after the component is gone."
+
+🌍 Example
+
+Leaving a fan running after leaving the room.
+
+13. Why store the timer ID?
+this.timerId = setInterval(...)
+
+Answer
+
+"To use it later with clearInterval()."
+
+14. What triggers componentDidUpdate()?
+
+Answer
+
+setState()
+New props
+15. Does render() run before or after componentDidMount()?
+
+Answer
+
+render()
+
+↓
+
+componentDidMount()
+16. Does setState() call render()?
+
+Answer
+
+"Yes. Updating state causes React to call render() again."
+
+17. What is wrong with this code?
+onClick={function () {
+   this.setState(...)
+}}
+
+Answer
+
+"A regular function has its own this, so this is undefined here."
+
+Correct:
+
+onClick={() =>
+   this.setState(...)
+}
+
+or bind the function in the constructor.
+
+18. Why use an arrow function?
+
+Answer
+
+"Arrow functions keep the correct this from the class."
+
+19. Which lifecycle runs only once?
+
+Answer
+
+constructor()
+componentDidMount()
+20. Which lifecycle runs every update?
+
+Answer
+
+render()
+componentDidUpdate()
+⭐ Important Notes
+Constructor
+Initialize state
+Runs once
+Render
+Returns JSX
+Runs after state/props changes
+componentDidMount
+Runs once
+API calls
+Timers
+Event listeners
+componentDidUpdate
+Runs after updates
+API calls based on changed props/state
+Logging
+componentWillUnmount
+Cleanup
+Clear timers
+Remove listeners
+Cancel subscriptions
+⭐ Live Example
+
+Suppose you're building a Weather App.
+
+Page Opens
+constructor
+↓
+
+render
+↓
+
+componentDidMount
+
+componentDidMount()
+
+Fetch weather API
+User Changes City
+setState()
+
+↓
+
+render()
+
+↓
+
+componentDidUpdate()
+
+Fetch weather for the new city.
+
+User Leaves Page
+componentWillUnmount()
+Stop timers
+Cancel API polling
+Remove event listeners
+⭐ Machine Coding Tips
+
+If the interviewer asks:
+
+Why use componentDidMount()?
+
+"To perform side effects like API calls, timers, or event listeners after the component has been rendered."
+
+Why use componentWillUnmount()?
+
+"To clean up resources like timers and event listeners to prevent memory leaks."
+
+Why not call an API in the constructor?
+
+"The constructor should only initialize state. Side effects like API calls belong in componentDidMount() after the component has mounted."

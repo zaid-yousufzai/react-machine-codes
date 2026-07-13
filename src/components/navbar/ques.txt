@@ -1,0 +1,394 @@
+1. Use NavLink instead of Link
+
+Reason:
+
+NavLink automatically knows which route is active.
+
+
+1. What is React Router?
+
+Answer
+
+"React Router is a library that enables client-side routing in React applications."
+
+2. What is client-side routing?
+
+Answer
+
+"The page changes without refreshing the browser because React updates only the necessary components."
+
+🌍 Example
+
+Instagram
+
+Click
+
+Profile
+
+The page changes instantly.
+
+No refresh.
+
+3. Why use BrowserRouter?
+
+Answer
+
+"BrowserRouter enables routing using the browser's History API."
+
+4. Why use Routes?
+
+Answer
+
+"Routes looks through all routes and renders the one that matches the current URL."
+
+5. What is Route?
+
+Answer
+
+"Route maps a URL path to a React component."
+
+Example
+
+<Route
+   path="/about"
+   element={<About />}
+/>
+6. Why use element?
+
+Answer
+
+"element specifies which component should be rendered for a matching route."
+
+7. Difference between Link and NavLink?
+Link	NavLink
+Navigates to another page	Navigates + knows the active route
+No active styling	Supports active styling
+8. Why use NavLink here?
+
+Answer
+
+"Because the requirement is to build a navigation bar, and NavLink lets us highlight the active page."
+
+9. What does to do?
+<NavLink to="/about">
+
+Answer
+
+"to specifies the destination path."
+
+10. What happens when we click Home?
+
+Answer
+
+NavLink
+
+is clicked.
+
+↓
+
+URL becomes
+
+/
+
+↓
+
+React Router matches
+
+<Route path="/" />
+
+↓
+
+Home component renders.
+
+11. Does the page refresh?
+
+Answer
+
+"No."
+
+React Router performs client-side routing.
+
+12. Why not use <a> tags?
+
+Answer
+
+"<a> reloads the entire page. Link and NavLink change the route without refreshing."
+
+13. What is the History API?
+
+Answer
+
+"It allows changing the browser URL without reloading the page."
+
+14. Can we have multiple routes?
+
+Answer
+
+"Yes."
+
+Example
+
+<Route path="/" />
+
+<Route path="/about" />
+
+<Route path="/contact" />
+
+<Route path="/profile" />
+15. Where should BrowserRouter be placed?
+
+Answer
+
+"At the top level of the application so all components can access routing."
+
+⭐ Live Example
+
+Think of
+
+Amazon
+
+Home
+
+↓
+
+Products
+
+↓
+
+Cart
+
+↓
+
+Orders
+
+Notice
+
+The page changes
+
+but
+
+the browser
+
+doesn't reload.
+
+That's React Router.
+
+⭐ Important Notes
+BrowserRouter
+Enables routing
+Routes
+Holds all routes
+Route
+Matches a URL
+Link
+Navigation
+NavLink
+Navigation + Active styling
+to
+Destination path
+element
+Component to render
+⭐ Machine Coding Tips
+Q. Why use NavLink instead of Link?
+
+"NavLink automatically identifies the active route, making it easy to apply active styles in a navigation menu."
+
+Q. Why not use <a>?
+
+"<a> refreshes the page. React Router provides Link and NavLink for client-side navigation without a full page reload."
+
+
+
+1. Difference between Link and NavLink
+Link
+Used to navigate from one page to another.
+It does not know which page is currently active.
+
+Example:
+
+<Link to="/about">About</Link>
+NavLink
+Also used for navigation.
+It knows if the current route is active.
+Useful for navigation bars because you can highlight the active link.
+
+Example:
+
+<NavLink to="/about">About</NavLink>
+🌍 Real-life Example
+
+On YouTube, the current page (Home, Shorts, Subscriptions) is highlighted.
+
+That's similar to how NavLink works.
+
+2. What is BrowserRouter?
+
+Answer
+
+"BrowserRouter enables routing in a React application. It keeps the UI and browser URL in sync using the browser's History API."
+
+Without BrowserRouter, routing won't work.
+
+Example:
+
+<BrowserRouter>
+   <App />
+</BrowserRouter>
+🌍 Real-life Example
+
+Think of it as the manager of all routes. It watches the URL and tells React which page to show.
+
+3. What is Routes?
+
+Answer
+
+"Routes contains all the route definitions. It checks the current URL and renders the matching route."
+
+Example:
+
+<Routes>
+   <Route path="/" element={<Home />} />
+   <Route path="/about" element={<About />} />
+</Routes>
+🌍 Real-life Example
+
+Think of Routes as a security guard checking your ticket (URL) and sending you to the correct room (component).
+
+4. What is Route?
+
+Answer
+
+"Route maps a URL path to a React component."
+
+Example:
+
+<Route
+    path="/about"
+    element={<About />}
+/>
+
+Meaning:
+
+If the URL is
+
+/about
+
+show
+
+<About />
+5. Why not use <a>?
+❌
+<a href="/about">About</a>
+
+Problem:
+
+Reloads the whole page.
+Loses component state.
+Slower.
+✅
+<Link to="/about">
+
+No page refresh.
+
+Faster.
+
+Better user experience.
+
+🌍 Example
+
+Imagine Netflix.
+
+Clicking Movies doesn't reload the whole website.
+
+That's because it uses client-side routing.
+
+6. What is Client-side Routing?
+
+Answer
+
+"Client-side routing changes the displayed page without reloading the browser."
+
+Only the content changes.
+
+The whole page doesn't reload.
+
+🌍 Example
+
+Instagram
+
+Click
+
+Home
+
+↓
+
+Profile
+
+↓
+
+Messages
+
+Everything changes instantly.
+
+7. What does element do?
+
+Example
+
+<Route
+   path="/about"
+   element={<About />}
+/>
+
+Answer
+
+"element tells React which component to display when the URL matches."
+
+Think of it as:
+
+URL
+
+↓
+
+Component
+8. What does to do?
+
+Example
+
+<Link to="/about">
+
+Answer
+
+"to specifies where the user should navigate."
+
+Similar to
+
+href="/about"
+
+but for React Router.
+
+9. Does React Router refresh the page?
+
+Answer
+
+"No."
+
+It changes only the required component.
+
+This makes navigation much faster.
+
+10. What is the History API?
+
+Answer
+
+"The History API lets JavaScript change the browser URL without refreshing the page."
+
+React Router uses this API internally.
+
+Examples:
+
+Back button
+Forward button
+Changing the URL
+Browser history
+
+All work without reloading the page.

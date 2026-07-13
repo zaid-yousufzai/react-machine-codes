@@ -1,5 +1,7 @@
 import React from 'react'
-import Profile from './components/user_profile/Profile'
+import Main from './components/navbar/Main'
+// import Tooltip from './components/tooltip/Tooltip'
+// import Profile from './components/user_profile/Profile'
 // import ClassCounter from './class_component/ClassCounter'
 // import InputFocus from './components/focus_input/InputFocus'
 // import RecipeFilterApp from './components/filter_recipes/RecipeFilterApp'
@@ -32,7 +34,9 @@ const App = () => {
       {/* <RecipeFilterApp/> */}
       {/* <InputFocus/> */}
       {/* <ClassCounter  name="Zaid Comp"/> */}
-      <Profile/>
+      {/* <Profile/> */}
+      {/* <Tooltip/> */}
+      <Main/>
     </div>
   )
 }
