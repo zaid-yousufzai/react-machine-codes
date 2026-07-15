@@ -1,0 +1,64 @@
+⭐ Flow
+Main
+ │
+ ▼
+UserProvider
+ │
+ ├──────────────┐
+ ▼              ▼
+Navbar      Dashboard
+ │              │
+ ▼              ▼
+useContext  useContext
+ │              │
+Login       Check Login
+Logout      Show Dashboard
+
+
+⭐ Why do we use children?
+const UserProvider = ({ children }) => {
+
+children represents everything inside:
+
+<UserProvider>
+    <Navbar />
+    <Dashboard />
+</UserProvider>
+
+So,
+
+{children}
+
+renders
+
+<Navbar />
+<Dashboard />
+
+⭐ Why create login() and logout()?
+
+Instead of writing
+
+setIsLoggedIn(true);
+
+everywhere,
+
+we create reusable functions:
+
+const login = () => setIsLoggedIn(true);
+
+const logout = () => setIsLoggedIn(false);
+
+This keeps the code cleaner and easier to maintain.
+
+
+⭐ Interview Best Practices
+
+✅ Context created in a separate file.
+
+✅ Provider wraps the entire app.
+
+✅ Consume context using useContext().
+
+✅ Pass both state and functions through the Provider.
+
+✅ Use meaningful names like UserContext and UserProvider.

@@ -1,0 +1,259 @@
+What is Context API?
+
+Answer
+
+"Context API is used to share data between components without passing props through every intermediate component."
+
+🌍 Real-Life Example
+
+Suppose your family has a WiFi password.
+
+Without Context API:
+
+Father
+   ↓
+Mother
+   ↓
+Brother
+   ↓
+You
+
+The password has to be passed through everyone.
+
+With Context API:
+
+WiFi Router
+      ↓
+Everyone can connect directly
+
+No need to ask each person.
+
+👉 Context API works the same way.
+
+Why do we use Context API?
+
+Normally,
+
+A
+ ↓
+B
+ ↓
+C
+ ↓
+D
+
+If D needs data from A,
+
+Without Context API
+
+A → B → C → D
+
+using props.
+
+This is called Prop Drilling.
+
+With Context API
+
+A
+│
+Context
+│
+D
+
+D gets data directly.
+
+Syntax (Easy to Remember)
+
+There are 3 steps.
+
+Step 1 - Create Context
+const Data = createContext();
+
+Creates a context.
+
+Step 2 - Provider
+<Data.Provider value="Zaid">
+
+Provides (shares) the data.
+
+Think:
+
+"I am giving data."
+
+Step 3 - Consumer
+<Data.Consumer>
+
+Consumes (receives) the data.
+
+Think:
+
+"I am using data."
+
+Your Flow
+A
+│
+Provider
+│
+B
+│
+C
+│
+D
+│
+Consumer
+
+A shares the data.
+
+D receives it.
+
+B and C do nothing.
+
+What is Provider?
+<dat.Provider value="zaid">
+
+Answer
+
+"Provider shares the data with all child components."
+
+What is Consumer?
+<dat.Consumer>
+
+Answer
+
+"Consumer receives the data from the Provider."
+
+What is value?
+value="zaid"
+
+This is the data you want to share.
+
+It can be
+
+value="Zaid"
+
+or
+
+value={100}
+
+or
+
+value={{name:"Zaid"}}
+
+or
+
+value={[1,2,3]}
+
+Anything.
+
+Why export Context?
+export { dat };
+
+So other components can import and use it.
+
+Flow
+createContext()
+
+↓
+
+Provider
+
+↓
+
+Consumer
+
+↓
+
+Data Received
+Interview Questions
+1. What is Context API?
+
+"It allows us to share data between components without passing props manually."
+
+2. Why use Context API?
+
+"To avoid prop drilling."
+
+3. What is Prop Drilling?
+A
+ ↓
+B
+ ↓
+C
+ ↓
+D
+
+Passing props through B and C even though only D needs them.
+
+4. What is createContext()?
+
+"It creates a Context object."
+
+5. What is Provider?
+
+"Provider shares data with child components."
+
+6. What is Consumer?
+
+"Consumer reads the shared data."
+
+7. Can Provider pass objects?
+
+Yes.
+
+value={{
+    name:"Zaid",
+    age:24
+}}
+8. Can multiple components use the same Context?
+
+Yes.
+
+        Provider
+      /    |    \
+     B     C     D
+
+All can access the same data.
+
+Easy Syntax to Remember
+// 1. Create
+const Data = createContext();
+
+// 2. Provide
+<Data.Provider value={data}>
+   <App />
+</Data.Provider>
+
+// 3. Consume
+<Data.Consumer>
+   {(value) => <h1>{value}</h1>}
+</Data.Consumer>
+Modern Way (Most Asked)
+
+Today, instead of Consumer, we usually use useContext.
+
+import { useContext } from "react";
+import { dat } from "./A";
+
+const user = useContext(dat);
+
+return <h1>{user}</h1>;
+
+This is shorter and easier to read.
+
+⭐ One-Line Notes
+createContext() → Creates a context.
+Provider → Shares data.
+value → The data being shared.
+Consumer → Reads the shared data.
+Context API → Avoids prop drilling.
+Modern way → Use useContext() instead of Consumer.
+⭐ Easy Formula for Interviews
+createContext()
+        ↓
+Provider (Share Data)
+        ↓
+Child Components
+        ↓
+Consumer / useContext (Receive Data)
+
+This simple flow is enough to explain Context API confidently in most React interviews.

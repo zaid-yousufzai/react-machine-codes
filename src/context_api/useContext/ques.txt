@@ -1,0 +1,194 @@
+What is useContext?
+
+Answer
+
+"useContext is a React Hook used to access data from Context without using Consumer."
+
+Real-Life Example
+
+Suppose there is a water tank.
+
+Water Tank (Provider)
+        ↓
+All houses
+
+Any house can get water directly.
+
+Similarly,
+
+Provider
+    ↓
+useContext
+    ↓
+Data
+
+
+Why use useContext?
+
+Instead of writing
+
+<dat.Consumer>
+  {(user) => <h1>{user}</h1>}
+</dat.Consumer>
+
+we simply write
+
+const user = useContext(dat);
+
+Less code and easier to read.
+
+Syntax (3 Steps)
+1. Create Context
+const Data = createContext();
+2. Provide Data
+<Data.Provider value="Zaid">
+    <App />
+</Data.Provider>
+3. Use Data
+const user = useContext(Data);
+
+
+Interview Questions
+1. What is useContext?
+
+"useContext is a Hook used to access Context data directly."
+
+2. Why use useContext?
+
+"It avoids using Consumer and makes the code simpler."
+
+3. Does useContext replace Consumer?
+
+"Yes. useContext is the modern way to consume Context."
+
+4. Can we use useContext in class components?
+
+❌ No.
+
+useContext is a Hook, and Hooks work only in functional components.
+
+Class components use
+
+<Context.Consumer>
+5. What does useContext() return?
+
+"It returns the value passed to the nearest Provider."
+
+Example
+
+<Data.Provider value="Zaid">
+
+then
+
+const user = useContext(Data);
+
+returns
+
+Zaid
+Easy Formula
+createContext()
+      ↓
+Provider
+      ↓
+value
+      ↓
+useContext()
+      ↓
+Data Received
+⭐ One-Line Notes
+createContext() → Creates Context.
+Provider → Shares data.
+value → Data to share.
+useContext() → Receives data.
+Consumer → Old way.
+useContext → Modern way.
+⭐ Interview Tip
+
+If the interviewer asks:
+
+"When should you use Context API?"
+
+Answer:
+
+"When multiple components need the same data (like user info, theme, or language), Context API helps avoid prop drilling. In functional components, I use useContext to access the shared data because it's simpler than using Consumer."
+
+
+❌ Problem
+
+In A.jsx, you exported data as a named export:
+
+export { data };
+
+But in C.jsx, you're importing it as a default export:
+
+import data from './A';   // ❌ Wrong
+✅ Correct Import
+
+Use curly braces because it's a named export:
+
+import { data } from "./A";
+✅ C.jsx
+import React, { useContext } from "react";
+import { data } from "./A";
+
+const C = () => {
+  const user = useContext(data);
+
+  return <div>{user} xxx</div>;
+};
+
+export default C;
+Why?
+Named Export
+export { data };
+
+Import with
+
+import { data } from "./A";
+Default Export
+export default data;
+
+Import with
+
+import data from "./A";
+Your Flow
+createContext()
+      ↓
+Provider (value="Maaz")
+      ↓
+B
+      ↓
+C
+      ↓
+useContext(data)
+      ↓
+Output: Maaz xxx
+Interview Question
+Q. What happens if you write this?
+import data from "./A";
+
+when
+
+export { data };
+
+Answer:
+
+"It will cause an import error because data is a named export, so it must be imported using curly braces."
+
+⭐ One More Best Practice
+
+Instead of naming the context data, use a descriptive name:
+
+const UserContext = createContext();
+
+export { UserContext };
+
+Then:
+
+<UserContext.Provider value="Maaz">
+
+and
+
+const user = useContext(UserContext);
+
+This makes your code easier to understand, especially in larger projects.

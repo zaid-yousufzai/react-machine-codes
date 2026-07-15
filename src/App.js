@@ -1,5 +1,8 @@
 import React from 'react'
-import Main from './components/navbar/Main'
+// import A from './context_api/useContext/A'
+import Main from './components/authentication/Main'
+// import A from './context_api/A'
+// import Main from './components/navbar/Main'
 // import Tooltip from './components/tooltip/Tooltip'
 // import Profile from './components/user_profile/Profile'
 // import ClassCounter from './class_component/ClassCounter'
@@ -36,6 +39,9 @@ const App = () => {
       {/* <ClassCounter  name="Zaid Comp"/> */}
       {/* <Profile/> */}
       {/* <Tooltip/> */}
+      {/* <Main/> */}
+      {/* <A/> */}
+      {/* <A/> */}
       <Main/>
     </div>
   )
