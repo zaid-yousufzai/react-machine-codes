@@ -1,0 +1,75 @@
+⭐ Interview Questions
+Why use trim()?
+
+To remove leading and trailing spaces.
+
+Example
+
+"   4   "
+
+becomes
+
+"4"
+
+Why use isNaN()?
+isNaN(num)
+
+Checks if the input is a valid number.
+
+Example
+
+abc
+
+returns
+
+true
+
+
+Why use setTimeout()?
+
+To simulate a 1-second API call/loading delay, as required.
+
+
+Why use a separate loading state?
+
+Instead of
+
+setResult("Checking...")
+
+we use
+
+loading
+
+because loading and result are two different states.
+
+
+Why clear the result first?
+setResult("");
+
+So the old result disappears before showing the new one.
+
+
+Why use Number()?
+
+Converts the string input into a number.
+
+Example
+
+"10"
+
+becomes
+
+10
+⭐ Optimization Tips
+
+✅ Validation only on button click.
+
+✅ Separate loading state.
+
+✅ Use trim().
+
+✅ Use isNaN().
+
+✅ Keep handleChange simple:
+
+onChange={(e) => setValue(e.target.value)}

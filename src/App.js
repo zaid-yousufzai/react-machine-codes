@@ -1,6 +1,8 @@
 import React from 'react'
+import Even from './components/evenorodd/Even'
 // import A from './context_api/useContext/A'
-import Main from './components/authentication/Main'
+// import Main from './components/authentication/Main'
+// import TogglePassword from './components/toggle_password/TogglePassword'
 // import A from './context_api/A'
 // import Main from './components/navbar/Main'
 // import Tooltip from './components/tooltip/Tooltip'
@@ -42,7 +44,9 @@ const App = () => {
       {/* <Main/> */}
       {/* <A/> */}
       {/* <A/> */}
-      <Main/>
+      {/* <Main/> */}
+      {/* <TogglePassword/> */}
+      <Even/>
     </div>
   )
 }
