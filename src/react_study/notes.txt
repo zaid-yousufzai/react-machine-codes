@@ -1,0 +1,8 @@
+Virtual DOM Codes
+https://github1s.com/coderarmy-notes/mern-stack-course/tree/main
+
+Virtual Dom notes
+https://app.notion.com/p/Lecture06-React-Virtual-DOM-Reconciliation-Complete-Study-Notes-2c43a78e0e228052ad82e4899bf42cb4
+
+For updating arrays and opject we need to write like
+setArrray([...count,40]) becuase if u put like setArray(count.push) it will not work as it compare the array on the basis of its refrence not on the basis of its elements.

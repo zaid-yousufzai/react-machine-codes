@@ -1,5 +1,7 @@
 import React from 'react'
-import Even from './components/evenorodd/Even'
+import Counter from './redux/features/counter/Counter'
+// import Even from './components/evenorodd/Even'
+// import Sidebar from './components/sidebar/Sidebar'
 // import A from './context_api/useContext/A'
 // import Main from './components/authentication/Main'
 // import TogglePassword from './components/toggle_password/TogglePassword'
@@ -46,7 +48,9 @@ const App = () => {
       {/* <A/> */}
       {/* <Main/> */}
       {/* <TogglePassword/> */}
-      <Even/>
+      {/* <Even/> */}
+      {/* <Sidebar/> */}
+      <Counter/>
     </div>
   )
 }

@@ -1,0 +1,332 @@
+What is Redux Toolkit (RTK)?
+
+Answer
+
+Redux Toolkit is the official and easier way to use Redux.
+
+Why use Redux Toolkit?
+
+To share data between many components.
+
+Example
+
+Without Redux
+
+App
+ ↓
+A
+ ↓
+B
+ ↓
+C
+
+Passing props everywhere (Prop Drilling).
+
+With Redux
+
+        Store
+      /   |   \
+     A    B    C
+
+Every component can access the data directly.
+
+What is Store?
+
+Answer
+
+Store is the place where all application data is stored.
+
+Example
+Store
+-------
+User
+Cart
+Theme
+Counter
+
+Think of it as a big storage box.
+
+What is configureStore()?
+configureStore({
+  reducer: {}
+})
+
+Answer
+
+It creates the Redux store.
+
+What is Provider?
+<Provider store={store}>
+    <App/>
+</Provider>
+
+Answer
+
+Provider gives the Redux store to the entire React app.
+
+What is createSlice()?
+createSlice()
+
+Answer
+
+It creates state, reducers, and actions together.
+
+No need to write everything separately.
+
+What is a Slice?
+
+A slice is one part of the store.
+
+Example
+
+Store
+
+Counter Slice
+
+User Slice
+
+Cart Slice
+
+Theme Slice
+
+Each feature has its own slice.
+
+What is initialState?
+const initialState = {
+   value:0
+}
+
+Answer
+
+It is the default state.
+
+What is Reducer?
+
+Answer
+
+A reducer changes the state.
+
+Example
+
+increment()
+
+changes
+
+0
+
+↓
+
+1
+What is Action?
+
+Answer
+
+Action tells Redux what to do.
+
+Example
+
+dispatch(increment())
+
+Means
+
+Increase the counter.
+
+What is dispatch()?
+dispatch(increment())
+
+Answer
+
+Sends an action to Redux.
+
+Think:
+
+"Please update the state."
+
+What is useSelector()?
+const count = useSelector(state => state.counter.value)
+
+Answer
+
+Reads data from the Redux store.
+
+What is useDispatch()?
+const dispatch = useDispatch();
+
+Answer
+
+Used to send actions to Redux.
+
+Flow
+Button Click
+      ↓
+dispatch()
+      ↓
+Reducer
+      ↓
+Store Updated
+      ↓
+useSelector()
+      ↓
+UI Updated
+Real-Life Example
+
+Think about Amazon Cart.
+
+Add Product
+
+↓
+
+dispatch(addToCart())
+
+↓
+
+Cart Slice
+
+↓
+
+Store Updated
+
+↓
+
+Navbar Cart Count Updates
+
+Any component can show the updated cart count.
+
+Folder Structure
+src/
+
+app/
+   store.js
+
+features/
+   counter/
+      counterSlice.js
+
+App.js
+Important APIs
+API	Use
+configureStore()	Create store
+createSlice()	Create slice
+Provider	Share store
+useSelector()	Read state
+useDispatch()	Update state
+Interview Questions
+1. What is Redux Toolkit?
+
+Redux Toolkit is the official and easier way to manage global state.
+
+2. Why use Redux Toolkit?
+
+To share data between multiple components and avoid prop drilling.
+
+3. What is Store?
+
+Store holds the application's global state.
+
+4. What is a Slice?
+
+A slice is one feature's state and logic (e.g., User, Cart, Counter).
+
+5. What is configureStore()?
+
+It creates the Redux store.
+
+6. What is createSlice()?
+
+It creates state, reducers, and actions in one place.
+
+7. What is initialState?
+
+The default value of the state.
+
+8. What is a Reducer?
+
+A function that updates the state.
+
+9. What is an Action?
+
+It tells Redux what update to perform.
+
+10. What is dispatch()?
+
+It sends an action to the Redux store.
+
+11. What is useSelector()?
+
+It reads data from the Redux store.
+
+12. What is useDispatch()?
+
+It sends actions to update the Redux store.
+
+13. Why don't we directly change Redux state?
+
+Redux state should be updated through reducers to keep state changes predictable.
+
+14. Can we write this?
+state.value += 1;
+
+Answer
+
+Yes. Redux Toolkit uses Immer, which lets us write simple "mutating" code while internally creating a new immutable state.
+
+15. What is Immer?
+
+Immer lets us write code that looks like we're changing the state directly, but it safely creates a new updated state behind the scenes.
+
+Easy Formula to Remember
+configureStore()
+        ↓
+Provider
+        ↓
+createSlice()
+        ↓
+useSelector() → Read Data
+        ↓
+useDispatch() → Update Data
+⭐ One-Line Notes
+Redux Toolkit (RTK) → Easy way to use Redux.
+Store → Global data storage.
+Provider → Gives the store to the app.
+Slice → One feature's state.
+createSlice() → Creates state + reducers + actions.
+Reducer → Updates state.
+Action → Tells Redux what to do.
+dispatch() → Sends an action.
+useSelector() → Reads state.
+useDispatch() → Updates state.
+Immer → Lets you write simple update code while keeping Redux state immutable internally.
+
+
+
+For a simple Counter app, the folder structure is:
+
+src/
+│
+├── app/
+│   └── store.js          // Creates Redux Store
+│
+├── features/
+│   └── counter/
+│       ├── Counter.jsx   // Counter UI
+│       └── counterSlice.js // State, reducers & actions
+│
+├── App.jsx               // Renders Counter
+├── main.jsx (or index.js)// Wraps App with Provider
+What each folder does (very short)
+app/ → Contains the Redux Store.
+features/ → Contains each feature (Counter, User, Cart, etc.).
+counterSlice.js → Counter state + reducers + actions.
+Counter.jsx → UI of the counter.
+App.jsx → Displays components.
+main.jsx / index.js → Wraps the app with <Provider>.
+Easy Formula
+Store
+   ↓
+Feature (Counter)
+   ↓
+Component (Counter.jsx)
+   ↓
+App
+   ↓
+main.jsx (Provider)
